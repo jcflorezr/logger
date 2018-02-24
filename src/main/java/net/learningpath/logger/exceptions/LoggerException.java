@@ -10,8 +10,8 @@ public class LoggerException extends RuntimeException {
         super(message);
     }
 
-    public static LoggerException messageToLogIsEmpty() {
-        return new LoggerException(MESSAGE_IS_EMPTY);
+    public static void messageToLogIsEmpty() {
+        throw new LoggerException(MESSAGE_IS_EMPTY);
     }
 
     public static LoggerException noLogHandlersSelected() {
