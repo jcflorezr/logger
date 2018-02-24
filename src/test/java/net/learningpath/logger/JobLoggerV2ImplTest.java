@@ -23,7 +23,11 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 
@@ -68,18 +72,26 @@ public class JobLoggerV2ImplTest {
         List<LogReport> actualLogReports = jobLoggerV2.logMessage(message, messageType, loggerTypes);
 
         assertThat(actualLogReports.size(), is(3));
-        assertTrue(actualLogReports.contains(new LogReport(consoleLogHandlerMock, true)));
-        assertTrue(actualLogReports.contains(new LogReport(fileLogHandlerMock, true)));
-        assertTrue(actualLogReports.contains(new LogReport(databaseLogHandlerMock, true)));
-        assertNull(actualLogReports.get(0).getCause());
+        assertTrue(actualLogReports.contains(LogReport.newLogReport(consoleLogHandlerMock, true)));
+        assertTrue(actualLogReports.contains(LogReport.newLogReport(fileLogHandlerMock, true)));
+        assertTrue(actualLogReports.contains(LogReport.newLogReport(databaseLogHandlerMock, true)));
         assertNotNull(actualLogReports.get(0).getAction());
         assertNotNull(actualLogReports.get(0).getLogHandler());
-        assertNull(actualLogReports.get(1).getCause());
+        assertNull(actualLogReports.get(0).getErrorDetails());
+        assertNull(actualLogReports.get(0).getErrorType());
+        assertNull(actualLogReports.get(0).getErrorMessage());
+        assertNull(actualLogReports.get(0).getErrorDetails());
         assertNotNull(actualLogReports.get(1).getAction());
         assertNotNull(actualLogReports.get(1).getLogHandler());
-        assertNull(actualLogReports.get(2).getCause());
+        assertNull(actualLogReports.get(1).getErrorType());
+        assertNull(actualLogReports.get(1).getErrorType());
+        assertNull(actualLogReports.get(1).getErrorMessage());
+        assertNull(actualLogReports.get(1).getErrorDetails());
         assertNotNull(actualLogReports.get(2).getAction());
         assertNotNull(actualLogReports.get(2).getLogHandler());
+        assertNull(actualLogReports.get(2).getErrorType());
+        assertNull(actualLogReports.get(2).getErrorMessage());
+        assertNull(actualLogReports.get(2).getErrorDetails());
     }
 
     @Test
@@ -96,14 +108,16 @@ public class JobLoggerV2ImplTest {
         List<LogReport> actualLogReports = jobLoggerV2.logMessage(message, messageType, loggerTypes);
 
         assertThat(actualLogReports.size(), is(2));
-        assertTrue(actualLogReports.contains(new LogReport(fileLogHandlerMock, false)));
-        assertTrue(actualLogReports.contains(new LogReport(databaseLogHandlerMock, false)));
-        assertNotNull(actualLogReports.get(0).getCause());
+        assertTrue(actualLogReports.contains(LogReport.newFailedLogReport(fileLogHandlerMock, new Exception())));
+        assertTrue(actualLogReports.contains(LogReport.newFailedLogReport(databaseLogHandlerMock, new Exception())));
+        assertFalse(actualLogReports.get(0).isSuccess());
         assertNotNull(actualLogReports.get(0).getAction());
         assertNotNull(actualLogReports.get(0).getLogHandler());
-        assertNotNull(actualLogReports.get(1).getCause());
+        assertNotNull(actualLogReports.get(0).getErrorType());
+        assertFalse(actualLogReports.get(1).isSuccess());
         assertNotNull(actualLogReports.get(1).getAction());
         assertNotNull(actualLogReports.get(1).getLogHandler());
+        assertNotNull(actualLogReports.get(1).getErrorType());
     }
 
     @Test(expected = LoggerException.class)

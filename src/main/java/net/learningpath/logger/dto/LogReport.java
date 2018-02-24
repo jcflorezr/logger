@@ -11,12 +11,29 @@ public class LogReport {
     private LogHandler logHandler;
     private boolean success;
     private String action;
-    private String cause;
+    private String errorType;
+    private String errorMessage;
+    private DetailedError errorDetails;
 
-    public LogReport(LogHandler logHandler, boolean success) {
+    private LogReport(LogHandler logHandler, boolean success) {
         this.logHandler = logHandler;
         this.success = success;
         setAction(this.logHandler);
+    }
+
+    private LogReport(LogHandler logHandler, Throwable cause) {
+        this(logHandler, false);
+        this.errorType = cause.getClass().getName();
+        this.errorMessage = cause.getMessage();
+        this.errorDetails = new DetailedError(cause);
+    }
+
+    public static LogReport newLogReport(LogHandler logHandler, boolean success) {
+        return new LogReport(logHandler, success);
+    }
+
+    public static LogReport newFailedLogReport(LogHandler logHandler, Throwable cause) {
+        return new LogReport(logHandler, cause);
     }
 
     public LogHandler getLogHandler() {
@@ -31,18 +48,22 @@ public class LogReport {
         return action;
     }
 
+    public String getErrorType() {
+        return errorType;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public DetailedError getErrorDetails() {
+        return errorDetails;
+    }
+
     private void setAction(LogHandler logHandler) {
         if (logHandler instanceof DatabaseLogHandler) action = "logging into database";
         else if (logHandler instanceof FileLogHandler) action = "logging into file";
         else action = "logging into console";
-    }
-
-    public String getCause() {
-        return cause;
-    }
-
-    public void setCause(String cause) {
-        this.cause = cause;
     }
 
     @Override
