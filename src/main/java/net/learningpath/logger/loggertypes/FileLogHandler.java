@@ -1,7 +1,11 @@
 package net.learningpath.logger.loggertypes;
 
+import io.vavr.Tuple;
+import io.vavr.control.Option;
+import io.vavr.control.Try;
 import net.learningpath.logger.dto.LoggingInfo;
 import net.learningpath.logger.exceptions.FileLogHandlerException;
+import net.learningpath.logger.messagetypes.MessageTypes;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,34 +14,36 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Properties;
 import java.util.logging.FileHandler;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FileLogHandler implements LogHandler {
 
-    private static final String FOLDER_PATH = "logFileFolder";
-    private static final String LOG_FILE_NAME = "/logFile.txt";
+    private static final String FOLDER_PATH_PROPERTY = "logFileFolder";
+    private static final String LOG_FILE_NAME_PROPERTY = "logFileName";
+    private static final String EMPTY = "";
 
     @Override
     public boolean putMessageInLog(LoggingInfo loggingInfo) {
-        try {
-            Properties props = getPropertiesForLogging();
-            String fileNameWithPath = props.getProperty(FOLDER_PATH) + LOG_FILE_NAME;
-            File file = new File(fileNameWithPath);
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            FileHandler fh = new FileHandler(fileNameWithPath);
-            Logger logger = loggingInfo.getLogger();
-            logger.addHandler(fh);
-            Level level = loggingInfo.getMessageType().getLevel();
-            String currentTimestampString = DateFormat.getDateInstance(DateFormat.LONG).format(new Date());
-            String messageWithTimestamp = currentTimestampString + " " + loggingInfo.getMessage();
-            logger.log(level, messageWithTimestamp);
-            return true;
-        } catch (IOException e) {
-            throw new FileLogHandlerException(e);
-        }
+        Logger logger = Try.of(this::getPropertiesForLogging).onFailure(FileLogHandlerException::couldNotFindThePropertiesFile)
+                .map(properties -> Tuple.of(properties.getProperty(FOLDER_PATH_PROPERTY), properties.getProperty(LOG_FILE_NAME_PROPERTY)))
+                .mapTry(fileTupleString -> Tuple.of(new File(fileTupleString._1), new File(fileTupleString._1 + fileTupleString._2)))
+                .andThen(fileTuple -> fileTuple._1.mkdirs())
+                .andThenTry(fileTuple -> fileTuple._2.createNewFile()).onFailure(FileLogHandlerException::couldNotCreateTheLogFile)
+                .mapTry(tuple -> new FileHandler(tuple._2.getPath())).onFailure(FileLogHandlerException::couldNotCreateTheLogHandler)
+                .map(fileHandler -> Tuple.of(loggingInfo.getLogger(), fileHandler))
+                .andThen(loggerTuple -> loggerTuple._1.addHandler(loggerTuple._2))
+                .map(loggerTuple -> loggerTuple._1)
+                .get();
+        String messageWithTimestamp =
+                Option.of(DateFormat.getDateInstance(DateFormat.LONG))
+                .map(dateFormat -> dateFormat.format(new Date()))
+                .map(currentTimestamp -> currentTimestamp + " -> " + loggingInfo.getMessage())
+                .getOrElse(EMPTY);
+        return Option.of(loggingInfo.getMessageType())
+                .map(MessageTypes::getLevel)
+                .peek(level -> logger.log(level, messageWithTimestamp))
+                .map(level -> true)
+                .getOrElse(false);
     }
 
     private Properties getPropertiesForLogging() throws IOException {
