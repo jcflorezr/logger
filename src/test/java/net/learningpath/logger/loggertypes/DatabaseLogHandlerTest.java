@@ -1,6 +1,6 @@
 package net.learningpath.logger.loggertypes;
 
-import net.learningpath.logger.database.MySqlConnector;
+import net.learningpath.logger.database.MySqlRepository;
 import net.learningpath.logger.dto.LoggingInfo;
 import net.learningpath.logger.exceptions.DatabaseException;
 import net.learningpath.logger.exceptions.DatabaseLogHandlerException;
@@ -27,7 +27,7 @@ import static org.mockito.Mockito.when;
 public class DatabaseLogHandlerTest {
 
     @Mock
-    private MySqlConnector mySqlConnector;
+    private MySqlRepository mySqlConnector;
     @Mock
     private Connection connection;
     @Mock
@@ -44,7 +44,7 @@ public class DatabaseLogHandlerTest {
     // Happy path
     @Test
     public void putMessageInLog() throws Exception {
-        PowerMockito.whenNew(MySqlConnector.class).withNoArguments().thenReturn(mySqlConnector);
+        PowerMockito.whenNew(MySqlRepository.class).withNoArguments().thenReturn(mySqlConnector);
         when(mySqlConnector.getConnection()).thenReturn(connection);
         when(connection.prepareStatement(anyString())).thenReturn(stmt);
         when(stmt.executeUpdate()).thenReturn(1);
@@ -55,7 +55,7 @@ public class DatabaseLogHandlerTest {
 
     @Test
     public void messageNotInsertedintoDatabase() throws Exception {
-        PowerMockito.whenNew(MySqlConnector.class).withNoArguments().thenReturn(mySqlConnector);
+        PowerMockito.whenNew(MySqlRepository.class).withNoArguments().thenReturn(mySqlConnector);
         when(mySqlConnector.getConnection()).thenReturn(connection);
         when(connection.prepareStatement(anyString())).thenReturn(stmt);
         when(stmt.executeUpdate()).thenReturn(0);
@@ -67,7 +67,7 @@ public class DatabaseLogHandlerTest {
 
     @Test(expected = DatabaseLogHandlerException.class)
     public void shouldGetDatabaseLogHandlerException() throws Exception {
-        PowerMockito.whenNew(MySqlConnector.class).withNoArguments().thenReturn(mySqlConnector);
+        PowerMockito.whenNew(MySqlRepository.class).withNoArguments().thenReturn(mySqlConnector);
         Exception exception = new Exception("dummy exception...");
         when(mySqlConnector.getConnection()).thenThrow(new DatabaseException(exception));
         DatabaseLogHandler databaseLogHandler = new DatabaseLogHandler();

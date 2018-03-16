@@ -1,7 +1,7 @@
 package net.learningpath.logger.loggertypes;
 
-import net.learningpath.logger.database.DatabaseConnector;
-import net.learningpath.logger.database.MySqlConnector;
+import net.learningpath.logger.database.DatabaseRepository;
+import net.learningpath.logger.database.MySqlRepository;
 import net.learningpath.logger.dto.LoggingInfo;
 import net.learningpath.logger.exceptions.DatabaseLogHandlerException;
 
@@ -17,7 +17,7 @@ public class DatabaseLogHandler implements LogHandler {
     @Override
     public boolean putMessageInLog(LoggingInfo loggingInfo) {
         try {
-            DatabaseConnector connector = new MySqlConnector();
+            DatabaseRepository connector = new MySqlRepository();
             Connection connection = connector.getConnection();
             PreparedStatement stmt = connection.prepareStatement(STMT_STRING);
             String currentTimestampString = DateFormat.getDateInstance(DateFormat.LONG).format(new Date());

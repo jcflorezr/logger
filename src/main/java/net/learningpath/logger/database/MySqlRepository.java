@@ -9,7 +9,7 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import net.learningpath.logger.exceptions.DatabaseException;
 
 
-public class MySqlConnector implements DatabaseConnector {
+public class MySqlRepository implements DatabaseRepository {
 
     private static final String DATABASE_NAME = "dbms";
     private static final String SERVER_NAME = "serverName";
