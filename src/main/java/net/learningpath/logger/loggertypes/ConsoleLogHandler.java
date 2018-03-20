@@ -1,6 +1,6 @@
 package net.learningpath.logger.loggertypes;
 
-import net.learningpath.logger.dto.LoggingInfo;
+import net.learningpath.logger.model.dto.LoggingInfo;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -18,7 +18,7 @@ public class ConsoleLogHandler implements LogHandler {
 
     /**
      * This method is no longer supported. It is meaningless to log messages
-     * in the console of the server which is containing this logger microservice
+     * in the console of the server which is containing this logger microservice,
      * because all the incoming messages are from external services that have
      * nothing to do with the logic of this logger microservice.
      *

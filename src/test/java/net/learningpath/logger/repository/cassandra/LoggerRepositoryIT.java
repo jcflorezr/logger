@@ -1,7 +1,7 @@
-package net.learningpath.logger.database.cassandra;
+package net.learningpath.logger.repository.cassandra;
 
 import net.learningpath.logger.config.CassandraTestContext;
-import net.learningpath.logger.entity.LogMessages;
+import net.learningpath.logger.model.entity.LogMessages;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

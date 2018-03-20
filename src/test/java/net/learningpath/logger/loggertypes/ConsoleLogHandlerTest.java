@@ -1,6 +1,6 @@
 package net.learningpath.logger.loggertypes;
 
-import net.learningpath.logger.dto.LoggingInfo;
+import net.learningpath.logger.model.dto.LoggingInfo;
 import net.learningpath.logger.messagetypes.MessageTypes;
 import org.junit.Test;
 

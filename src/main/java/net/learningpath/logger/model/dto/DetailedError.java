@@ -1,4 +1,4 @@
-package net.learningpath.logger.dto;
+package net.learningpath.logger.model.dto;
 
 import io.vavr.control.Option;
 

@@ -1,6 +1,6 @@
 package net.learningpath.logger;
 
-import net.learningpath.logger.dto.LogReport;
+import net.learningpath.logger.model.dto.LogReport;
 import net.learningpath.logger.loggertypes.factoryclasses.LoggerType;
 import net.learningpath.logger.messagetypes.MessageTypes;
 

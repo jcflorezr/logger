@@ -1,4 +1,4 @@
-package net.learningpath.logger.entity;
+package net.learningpath.logger.model.entity;
 
 import org.springframework.cassandra.core.PrimaryKeyType;
 import org.springframework.data.cassandra.mapping.Column;

@@ -3,9 +3,9 @@ package net.learningpath.logger.loggertypes;
 import io.vavr.Tuple;
 import io.vavr.control.Option;
 import io.vavr.control.Try;
-import net.learningpath.logger.dto.LoggingInfo;
 import net.learningpath.logger.exceptions.FileLogHandlerException;
 import net.learningpath.logger.messagetypes.MessageTypes;
+import net.learningpath.logger.model.dto.LoggingInfo;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -54,4 +54,5 @@ public class FileLogHandler implements LogHandler {
         fileLoggerProps.load(fileInputStream);
         return fileLoggerProps;
     }
+
 }

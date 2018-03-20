@@ -1,6 +1,6 @@
 package net.learningpath.logger.config;
 
-import net.learningpath.logger.database.cassandra.LoggerRepository;
+import net.learningpath.logger.repository.cassandra.LoggerRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

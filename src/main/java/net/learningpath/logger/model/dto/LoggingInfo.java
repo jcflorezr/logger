@@ -1,4 +1,4 @@
-package net.learningpath.logger.dto;
+package net.learningpath.logger.model.dto;
 
 import net.learningpath.logger.messagetypes.MessageTypes;
 

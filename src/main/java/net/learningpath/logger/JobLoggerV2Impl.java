@@ -2,8 +2,8 @@ package net.learningpath.logger;
 
 import io.vavr.control.Option;
 import io.vavr.control.Try;
-import net.learningpath.logger.dto.LogReport;
-import net.learningpath.logger.dto.LoggingInfo;
+import net.learningpath.logger.model.dto.LogReport;
+import net.learningpath.logger.model.dto.LoggingInfo;
 import net.learningpath.logger.exceptions.LoggerException;
 import net.learningpath.logger.loggertypes.LogHandler;
 import net.learningpath.logger.loggertypes.factoryclasses.DatabaseLoggerType;
