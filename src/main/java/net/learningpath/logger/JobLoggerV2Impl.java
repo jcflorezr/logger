@@ -5,10 +5,10 @@ import io.vavr.control.Try;
 import net.learningpath.logger.model.dto.LogReport;
 import net.learningpath.logger.model.dto.LoggingInfo;
 import net.learningpath.logger.exceptions.LoggerException;
-import net.learningpath.logger.loggertypes.LogHandler;
-import net.learningpath.logger.loggertypes.factoryclasses.DatabaseLoggerType;
-import net.learningpath.logger.loggertypes.factoryclasses.LoggerType;
-import net.learningpath.logger.messagetypes.MessageTypes;
+import net.learningpath.logger.service.loggertypes.LogHandler;
+import net.learningpath.logger.service.loggertypes.factoryclasses.DatabaseLoggerType;
+import net.learningpath.logger.service.loggertypes.factoryclasses.LoggerType;
+import net.learningpath.logger.model.dto.MessageTypes;
 
 import java.util.ArrayList;
 import java.util.List;

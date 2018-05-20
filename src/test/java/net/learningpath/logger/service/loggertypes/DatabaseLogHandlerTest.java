@@ -1,4 +1,4 @@
-package net.learningpath.logger.loggertypes;
+package net.learningpath.logger.service.loggertypes;
 
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;

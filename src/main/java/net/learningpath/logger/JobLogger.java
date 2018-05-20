@@ -1,11 +1,11 @@
 package net.learningpath.logger;
 
 import net.learningpath.logger.exceptions.LoggerException;
-import net.learningpath.logger.loggertypes.factoryclasses.ConsoleLoggerType;
-import net.learningpath.logger.loggertypes.factoryclasses.DatabaseLoggerType;
-import net.learningpath.logger.loggertypes.factoryclasses.FileLoggerType;
-import net.learningpath.logger.loggertypes.factoryclasses.LoggerType;
-import net.learningpath.logger.messagetypes.MessageTypes;
+import net.learningpath.logger.service.loggertypes.factoryclasses.ConsoleLoggerType;
+import net.learningpath.logger.service.loggertypes.factoryclasses.DatabaseLoggerType;
+import net.learningpath.logger.service.loggertypes.factoryclasses.FileLoggerType;
+import net.learningpath.logger.service.loggertypes.factoryclasses.LoggerType;
+import net.learningpath.logger.model.dto.MessageTypes;
 
 import java.util.Arrays;
 import java.util.List;

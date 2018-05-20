@@ -1,8 +1,8 @@
-package net.learningpath.logger.loggertypes;
+package net.learningpath.logger.service.loggertypes;
 
 import net.learningpath.logger.model.dto.LoggingInfo;
 import net.learningpath.logger.exceptions.FileLogHandlerException;
-import net.learningpath.logger.messagetypes.MessageTypes;
+import net.learningpath.logger.model.dto.MessageTypes;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

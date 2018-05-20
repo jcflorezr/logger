@@ -1,4 +1,4 @@
-package net.learningpath.logger.loggertypes;
+package net.learningpath.logger.service.loggertypes;
 
 import net.learningpath.logger.model.dto.LoggingInfo;
 

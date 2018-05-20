@@ -1,7 +1,5 @@
 package net.learningpath.logger.model.dto;
 
-import net.learningpath.logger.messagetypes.MessageTypes;
-
 import java.util.logging.Logger;
 
 public class LoggingInfo {

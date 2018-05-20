@@ -1,10 +1,10 @@
-package net.learningpath.logger.loggertypes;
+package net.learningpath.logger.service.loggertypes;
 
 import io.vavr.Tuple;
 import io.vavr.control.Option;
 import io.vavr.control.Try;
 import net.learningpath.logger.exceptions.FileLogHandlerException;
-import net.learningpath.logger.messagetypes.MessageTypes;
+import net.learningpath.logger.model.dto.MessageTypes;
 import net.learningpath.logger.model.dto.LoggingInfo;
 
 import java.io.File;

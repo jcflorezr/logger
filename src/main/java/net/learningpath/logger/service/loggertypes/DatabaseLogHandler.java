@@ -1,12 +1,6 @@
-package net.learningpath.logger.loggertypes;
+package net.learningpath.logger.service.loggertypes;
 
 import net.learningpath.logger.model.dto.LoggingInfo;
-import net.learningpath.logger.exceptions.DatabaseLogHandlerException;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.text.DateFormat;
-import java.util.Date;
 
 public class DatabaseLogHandler implements LogHandler {
 

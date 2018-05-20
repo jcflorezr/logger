@@ -1,4 +1,4 @@
-package net.learningpath.logger.messagetypes;
+package net.learningpath.logger.model.dto;
 
 import java.util.logging.Level;
 
