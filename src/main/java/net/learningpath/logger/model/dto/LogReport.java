@@ -1,8 +1,8 @@
 package net.learningpath.logger.model.dto;
 
-import net.learningpath.logger.service.loggertypes.DatabaseLogHandler;
-import net.learningpath.logger.service.loggertypes.FileLogHandler;
-import net.learningpath.logger.service.loggertypes.LogHandler;
+import net.learningpath.logger.service.DatabaseLogHandler;
+import net.learningpath.logger.service.FileLogHandler;
+import net.learningpath.logger.service.LogHandler;
 
 import java.util.Objects;
 

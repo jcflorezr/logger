@@ -1,4 +1,4 @@
-package net.learningpath.logger.service.loggertypes;
+package net.learningpath.logger.service;
 
 import io.vavr.Tuple;
 import io.vavr.control.Option;
