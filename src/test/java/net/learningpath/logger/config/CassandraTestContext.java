@@ -15,6 +15,10 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.IOException;
 
+/**
+ * See Kotlin version of this class
+ * @see CassandraTestContextKT
+ */
 @Configuration
 @PropertySources({
     @PropertySource("classpath:cassandra-sentences.properties"),

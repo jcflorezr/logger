@@ -11,6 +11,10 @@ import org.springframework.data.cassandra.mapping.BasicCassandraMappingContext;
 import org.springframework.data.cassandra.mapping.CassandraMappingContext;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
+/**
+ * See Kotlin version of this class
+ * @see CassandraConfigKT
+ */
 @Configuration
 @PropertySource("classpath:cassandra.properties")
 @EnableCassandraRepositories(basePackageClasses = {LoggerRepository.class})

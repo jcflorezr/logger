@@ -21,6 +21,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
+/**
+ * See Kotlin version of this class
+ * @see LoggerRepositoryITKT
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {CassandraTestContext.class})
 public class LoggerRepositoryIT {

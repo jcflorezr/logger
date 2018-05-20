@@ -5,6 +5,10 @@ import org.springframework.data.cassandra.mapping.Column;
 import org.springframework.data.cassandra.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.mapping.Table;
 
+/**
+ * See Kotlin version of this class
+ * @see LogMessagesKT
+ */
 @Table("log_messages")
 public class LogMessages {
 
