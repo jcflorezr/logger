@@ -6,6 +6,10 @@ import net.learningpath.logger.service.LogHandler;
 
 import java.util.Objects;
 
+/**
+ * See Kotlin version of this class
+ * @see ResponseKT
+ */
 public class LogReport {
 
     private LogHandler logHandler;
