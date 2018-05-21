@@ -10,7 +10,7 @@ import org.springframework.data.cassandra.mapping.Table
  * @see LogMessages
  */
 @Table("log_messages")
-data class LogMessagesKT (
+data class LogMessageKT (
     @PrimaryKeyColumn(name = "year", ordinal = 0, type = PrimaryKeyType.CLUSTERED)
     val year: Int,
 

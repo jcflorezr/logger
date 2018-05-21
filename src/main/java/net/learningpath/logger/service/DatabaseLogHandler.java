@@ -2,6 +2,10 @@ package net.learningpath.logger.service;
 
 import net.learningpath.logger.model.dto.LoggingInfo;
 
+/**
+ * See Kotlin version of this class
+ * @see DatabaseLogHandlerKT
+ */
 public class DatabaseLogHandler implements LogHandler {
 
     private static final String STMT_STRING = "INSERT INTO Log_Values(?, ?)";

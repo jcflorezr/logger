@@ -7,7 +7,7 @@ import org.springframework.data.cassandra.mapping.Table;
 
 /**
  * See Kotlin version of this class
- * @see LogMessagesKT
+ * @see LogMessageKT
  */
 @Table("log_messages")
 public class LogMessages {

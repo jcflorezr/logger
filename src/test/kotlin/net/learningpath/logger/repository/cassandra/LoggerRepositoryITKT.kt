@@ -1,7 +1,7 @@
 package net.learningpath.logger.repository.cassandra
 
 import net.learningpath.logger.config.CassandraTestContextKT
-import net.learningpath.logger.model.entity.LogMessagesKT
+import net.learningpath.logger.model.entity.LogMessageKT
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.After
 import org.junit.Assert.assertThat
@@ -36,12 +36,12 @@ class LoggerRepositoryITKT {
 
     @Before
     fun createTable() {
-        adminTemplate!!.createTable(true, CqlIdentifier.cqlId(logMessageTableName!!), LogMessagesKT::class.java, HashMap())
+        adminTemplate!!.createTable(true, CqlIdentifier.cqlId(logMessageTableName!!), LogMessageKT::class.java, HashMap())
     }
 
     @Test
     fun whenSavingLogMessage_thenAvailableOnRetrieval() {
-        val log = LogMessagesKT(2018, 3, 16, 16, 13, 34, 234, "any sender", "info", "log stored successfully!!!")
+        val log = LogMessageKT(2018, 3, 16, 16, 13, 34, 234, "any sender", "info", "log stored successfully!!!")
         val savedLog = loggerRepository!!.save(log)
 
         val mapId = BasicMapId

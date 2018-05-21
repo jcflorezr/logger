@@ -2,6 +2,10 @@ package net.learningpath.logger.model.dto;
 
 import java.util.logging.Logger;
 
+/**
+ * See Kotlin version of this class
+ * @see LoggingInfoKT
+ */
 public class LoggingInfo {
 
     private String message;

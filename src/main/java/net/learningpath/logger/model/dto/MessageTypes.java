@@ -2,6 +2,10 @@ package net.learningpath.logger.model.dto;
 
 import java.util.logging.Level;
 
+/**
+ * See Kotlin version of this class
+ * @see MessageTypesKT
+ */
 public enum MessageTypes {
     INFO(1, Level.INFO),
     ERROR(2, Level.SEVERE),

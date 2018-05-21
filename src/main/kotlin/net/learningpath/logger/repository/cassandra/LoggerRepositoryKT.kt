@@ -1,6 +1,6 @@
 package net.learningpath.logger.repository.cassandra
 
-import net.learningpath.logger.model.entity.LogMessagesKT
+import net.learningpath.logger.model.entity.LogMessageKT
 import org.springframework.data.cassandra.repository.CassandraRepository
 import org.springframework.stereotype.Repository
 
@@ -9,4 +9,4 @@ import org.springframework.stereotype.Repository
  * @see LoggerRepository
  */
 @Repository
-interface LoggerRepositoryKT : CassandraRepository<LogMessagesKT>
+interface LoggerRepositoryKT : CassandraRepository<LogMessageKT>
